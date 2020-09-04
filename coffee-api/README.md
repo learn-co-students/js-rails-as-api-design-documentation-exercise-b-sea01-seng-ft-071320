@@ -1,24 +1,31 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an API to get coffee. Got your mug?
 
-Things you may want to cover:
+The endpoint for this API is `http://localhost:3000/coffee`
 
-* Ruby version
+There are two queries you can attach to the path and one modifying query: `origin` and `limit`
 
-* System dependencies
+`origin` will only serve coffees that match the origin string passed to the query
 
-* Configuration
+Here's an example:
 
-* Database creation
+`http://localhost:3000/coffee?origin=jamaica`
 
-* Database initialization
+`limit` will limit the results to the number passed to the query
 
-* How to run the test suite
+* Optionally, you can include `page` to a `limit` query (where page 0 is the first page) to paginate the results based on the limit number. _without the page query, limit will always return the first page of results_
 
-* Services (job queues, cache servers, search engines, etc.)
+As examples:
 
-* Deployment instructions
+`http://localhost:3000/coffee?limit=50`
 
-* ...
+`http://localhost:3000/coffee?limit=100&page=2`
+
+_remember that this second path actually gets the **third** page of results_
+
+You can also combine all of these queries in one request in no particular order:
+
+`http://localhost:3000/coffee?origin=jamaica&limit=50&page=0`
+
+Have fun!
